@@ -21,5 +21,4 @@ COPY target/d13revision-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8086
 
 # Run the Spring Boot application
-#ENTRYPOINT ["java", "-jar", "app.jar"]
-CMD ["mvn", "spring-boot:run"]
+ENTRYPOINT ["java", "-jar", "d13revision-0.0.1-SNAPSHOT.jar"]
