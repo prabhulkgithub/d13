@@ -1,6 +1,6 @@
 # Reference
 
-## Maven Command
+## Maven Command -
 
 1. mvnw
 
@@ -18,7 +18,8 @@
 
 8. mvnw clean test
 
-
+----
+ 
 ## Git command
 
 1. git init (initial a local repo, doesn't link to remote yet)
