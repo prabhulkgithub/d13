@@ -36,8 +36,8 @@ public class PersonController {
         return "index";
     }
 
-    //@RequestMapping(value = "/testRetrieve", method = RequestMethod.GET, produces = "application/json")
-    @GetMapping(value = "/testRetrieve", produces = "application/json")
+    @RequestMapping(value = "/testRetrieve", method = RequestMethod.GET, produces = "application/json")
+    //@GetMapping(value = "/testRetrieve", produces = "application/json")
     public @ResponseBody List<Person> getAllPersons() {
         personList = perSvc.getPersons();
 
