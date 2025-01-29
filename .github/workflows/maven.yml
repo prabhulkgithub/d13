@@ -43,18 +43,25 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   deploy:
-    needs: snyk
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Build with Maven
-        run: mvn clean package
-
-      - name: Deploy to Railway
-        run: |
-          curl -s https://railway.app/install.sh | bash
-          railway login --token ${{ secrets.RAILWAY_TOKEN }}
-          railway project connect d13
-          railway up
+      needs: snyk
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+  
+        - name: Build with Maven
+          run: mvn clean package
+  
+        - name: Install Railway CLI
+          run: curl -fsSL https://cli.railway.app | sh
+  
+        - name: Login to Railway
+          env:
+            RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          run: railway login --token $RAILWAY_TOKEN
+  
+        - name: Connect to Railway Project
+          run: railway project connect d13
+  
+        - name: Deploy to Railway
+          run: railway 
